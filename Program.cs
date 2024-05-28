@@ -10,8 +10,18 @@ namespace ai_2
     {
         static void Main(string[] args)
         {
-            string[] questions = { "привет", "как тебя зовут", "как дела" };
-            string[] answers = { "здравствуйте", "Абоба", "хорошо" };
+
+           // string[] questions = { "привет", "как тебя зовут", "как дела" };
+            List<string> questions = new List<string>();
+            questions.Add("привет");
+            questions.Add("как тебя зовут");
+            questions.Add("как дела");
+
+            //string[] answers = { "здравствуйте", "Абоба", "хорошо" };
+            List<string> answers = new List<string>();
+            answers.Add("здравствуйте");
+            answers.Add("Абоба");
+            answers.Add("хорошо");
 
             string question = null;
 
@@ -19,7 +29,7 @@ namespace ai_2
             {
                 question = Console.ReadLine();
 
-                for (int i = 0; i < questions.Length; i++)
+                for (int i = 0; i < questions.Count; i++)
                 {
                     if (question == questions[i])
                     {
@@ -27,9 +37,13 @@ namespace ai_2
 
                         break;
                     }
-                    else if (i == questions.Length - 1)
+                    else if (i == questions.Count - 1)
                     {
                         Console.WriteLine("Я еще маленький, объясни мне!");
+                        questions.Add(question);
+                        string answer = Console.ReadLine();
+                        answers.Add(answer);
+                        Console.WriteLine("Я запомнил");
                     }
                 }
             } while (true);
